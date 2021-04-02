@@ -33,7 +33,7 @@
   width: 100%;
   background-color: color('light');
   padding: $spacing--xl;
-  @include frosted-glass(color('light'), 0.9);
+  @include frosted-glass(color('light'), 0.85);
   &__footer {
     position: relative;
     display: flex;
