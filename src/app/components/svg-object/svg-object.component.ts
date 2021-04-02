@@ -20,15 +20,18 @@ export class SvgObjectComponent implements OnInit, AfterViewInit {
     const circles = this.circle.map((cir) => cir.nativeElement);
     const staggering = gsap.timeline({
       defaults: {
-        repeat: -1,
-        yoyo: true,
-        yoyoEase: true,
-        duration: 1.75,
+        // repeat: -1,
+        // yoyo: true,
+        // yoyoEase: true,
+        duration: 1,
         transformOrigin: '50%',
         ease: 'back',
         stagger: {
+          repeat: -1,
+          yoyo: true,
+          yoyoEase: true,
           grid: 'auto',
-          amount: 2.75,
+          amount: 1.75,
           from: 'center',
           //ease: 'power2.in',
         },
