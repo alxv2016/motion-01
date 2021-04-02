@@ -21,51 +21,11 @@ form legend {
   margin: $spacing--xl 0 $spacing--sm;
 }
 
-// ps5 titles
-.display-1 {
-  font-size: $large--title;
-  font-weight: font-weight('bold');
-  line-height: 1.15;
-  margin: 0;
-  @include breakpoint(sm) {
-    font-size: $huge--title;
-  }
-  @include breakpoint(md) {
-    font-size: $headliner--1;
-  }
-  @include breakpoint(lg) {
-    font-size: $headliner--2;
-  }
-  & ~ p {
-    margin-top: $spacing--xl;
-  }
-}
-
-.display-2 {
-  font-size: $title--3;
-  line-height: 1.15;
-  font-weight: font-weight('bold');
-  @include breakpoint(md) {
-    font-size: $title--2;
-  }
-  @include breakpoint(lg) {
-    font-size: $title--1;
-  }
-  & ~ h2,
-  & ~ h2,
-  & ~ h3,
-  & ~ h4 {
-    margin-top: 0;
-  }
-  & ~ p {
-    margin-top: $spacing--xl;
-  }
-}
-
-.display-3 {
+.display {
   font-size: $title--1;
   line-height: 1.15;
   font-weight: font-weight('bold');
+  margin: 0;
   @include breakpoint(md) {
     font-size: $large--title;
   }
@@ -79,23 +39,7 @@ form legend {
     margin-top: 0;
   }
   & ~ p {
-    margin-top: $spacing--lg;
-  }
-}
-
-.sub-headline {
-  font-size: $subtitle;
-  font-weight: font-weight('medium');
-  line-height: 1.45;
-  margin: 0;
-  @include breakpoint(md) {
-    font-size: $subtitle--2;
-  }
-  & ~ h1,
-  & ~ h2,
-  & ~ h3,
-  & ~ h4 {
-    margin-top: $spacing--2xs;
+    margin: 0;
   }
 }
 
@@ -126,34 +70,7 @@ form legend {
 
 .small-print {
   font-size: $body--1;
-  @include breakpoint(md) {
-    font-size: $subtitle;
-  }
-}
-
-// modifiers
-.copy--muted {
-  color: color('offgrey');
-}
-
-.copy--carbon {
-  color: color('carbon');
-}
-
-.copy--lit {
-  color: color('lit');
-}
-
-.copy--tint {
-  color: color('tint');
-}
-
-.copy--accent-1 {
-  color: color('accent1');
-}
-
-.copy--accent-2 {
-  color: color('accent2');
+  line-height: 1.25;
 }
 
 h1,

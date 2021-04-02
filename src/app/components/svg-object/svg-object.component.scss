@@ -1,0 +1,15 @@
+@import '../../../scss/00_imports';
+:host-context(.c-svg-object) {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+}
+
+.grid {
+  position: relative;
+  height: 100%;
+  width: auto;
+  fill: color('dark');
+}
