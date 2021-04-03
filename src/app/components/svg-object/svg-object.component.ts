@@ -10,6 +10,8 @@ import {ScrollTrigger} from 'gsap/ScrollTrigger';
 export class SvgObjectComponent implements OnInit, AfterViewInit {
   @HostBinding('class') class = 'c-svg-object';
   @ViewChildren('circle', {read: ElementRef}) circle!: QueryList<ElementRef>;
+  @ViewChildren('circle2', {read: ElementRef}) circle2!: QueryList<ElementRef>;
+  @ViewChildren('circle3', {read: ElementRef}) circle3!: QueryList<ElementRef>;
   constructor() {
     gsap.registerPlugin(ScrollTrigger);
   }
@@ -22,12 +24,14 @@ export class SvgObjectComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     const circles = this.circle.map((cir) => cir.nativeElement);
+    const circles2 = this.circle2.map((cir) => cir.nativeElement);
+    const circles3 = this.circle3.map((cir) => cir.nativeElement);
 
     const staggering = gsap.timeline({
       defaults: {
         transformOrigin: '50% 50%',
         ease: 'back',
-        duration: 3,
+        duration: 2,
         repeat: -1,
         yoyo: true,
         yoyoEase: true,
@@ -39,22 +43,47 @@ export class SvgObjectComponent implements OnInit, AfterViewInit {
       },
     });
 
-    staggering.fromTo(
-      circles,
-      {
-        scale: 0.125,
-        fill: '#ff3c78',
-        strokeDasharray: '60',
-        strokeDashoffset: '360',
-      },
-      {
-        scale: 0.98,
-        fill: '#64f5b9',
-        strokeWidth: 3,
-        strokeDashoffset: '0',
-        rotate: 360,
-        stroke: '#ff3c78',
-      }
-    );
+    staggering
+      .fromTo(
+        circles,
+        {
+          scale: 0.125,
+          fill: 'black',
+        },
+        {
+          scale: 0.45,
+          fill: 'black',
+        }
+      )
+      .fromTo(
+        circles2,
+        {
+          x: 0,
+          scale: 0.125,
+          fill: 'black',
+        },
+        {
+          x: 1,
+          scale: 0.36,
+          fill: 'cyan',
+          ease: 'elastic',
+        },
+        0.125
+      )
+      .fromTo(
+        circles3,
+        {
+          y: 0,
+          scale: 0.125,
+          fill: 'black',
+        },
+        {
+          y: 1,
+          scale: 0.36,
+          fill: 'magenta',
+          ease: 'elastic',
+        },
+        0.145
+      );
   }
 }
