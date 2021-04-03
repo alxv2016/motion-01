@@ -3,13 +3,10 @@
 :host-context(.c-art-frame) {
   position: relative;
   z-index: 1;
-  width: 90%;
-  height: 90%;
-  max-width: 568px;
-  max-height: 768px;
   display: flex;
   flex-direction: column;
-  background-color: color('offset');
+  align-items: center;
+  background-color: color('light');
   @include elevate-3(color('dark'), 0.075);
   border-radius: 0.125rem;
   overflow: hidden;
@@ -20,23 +17,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  width: 350px;
+  height: 350px;
   border: $spacing--md solid color('light');
+  background-color: color('offset');
   overflow: hidden;
+  @include breakpoint(md) {
+    width: 600px;
+    height: 600px;
+  }
 }
 
 .art-work-plate {
-  position: absolute;
-  left: 0;
-  bottom: 0;
+  position: relative;
   width: 100%;
   background-color: color('light');
   padding: $spacing--xl;
-  @include frosted-glass(color('light'), 0.85);
   &__footer {
     position: relative;
     display: flex;
+    flex-grow: 1;
     align-items: center;
     justify-content: space-between;
     margin-top: $spacing--xl;

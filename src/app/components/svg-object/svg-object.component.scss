@@ -2,6 +2,8 @@
 :host-context(.c-svg-object) {
   position: relative;
   display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 0;
   height: 100vh;
   width: 100vw;
@@ -9,6 +11,7 @@
 
 .grid {
   position: relative;
-  height: 100%;
-  width: auto;
+  flex-shrink: 0;
+  height: 90%;
+  width: 90%;
 }

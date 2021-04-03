@@ -22,24 +22,22 @@ export class SvgObjectComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     const circles = this.circle.map((cir) => cir.nativeElement);
-    let randomIndex = 40;
+
     const staggering = gsap.timeline({
       defaults: {
+        transformOrigin: '50% 50%',
+        ease: 'elastic',
+        duration: 1.75,
         repeat: -1,
         yoyo: true,
         yoyoEase: true,
-        transformOrigin: '50% 50%',
-        ease: 'back',
-        duration: 1,
         stagger: {
-          //repeat: -1,
           grid: 'auto',
-          amount: 0.75,
-          from: 'center',
+          amount: 2.25,
+          from: 0,
         },
       },
     });
-    console.log(randomIndex);
 
     staggering.fromTo(
       circles,
@@ -48,7 +46,7 @@ export class SvgObjectComponent implements OnInit, AfterViewInit {
         fill: '#ff3c78',
       },
       {
-        scale: 0.75,
+        scale: 0.98,
         fill: '#ff3c78',
       }
     );
