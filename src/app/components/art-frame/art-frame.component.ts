@@ -5,9 +5,10 @@ import {Component, HostBinding, OnInit} from '@angular/core';
   templateUrl: './art-frame.component.html',
   styleUrls: ['./art-frame.component.scss'],
 })
-export class ArtFrameComponent implements OnInit {
+export class ArtFrameComponent {
+  artworkTitle = 'The art work.';
+  artworkDescr = 'Jump into the grid.';
+  artworkNum = '001';
   @HostBinding('class') class = 'c-art-frame';
   constructor() {}
-
-  ngOnInit(): void {}
 }

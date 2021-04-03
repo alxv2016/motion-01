@@ -1,4 +1,14 @@
-import {AfterViewInit, Component, ElementRef, HostBinding, OnInit, QueryList, ViewChildren} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  HostBinding,
+  OnInit,
+  QueryList,
+  Renderer2,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
 import {gsap} from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
 
@@ -7,16 +17,15 @@ import {ScrollTrigger} from 'gsap/ScrollTrigger';
   templateUrl: './svg-object.component.html',
   styleUrls: ['./svg-object.component.scss'],
 })
-export class SvgObjectComponent implements OnInit, AfterViewInit {
+export class SvgObjectComponent implements AfterViewInit {
   @HostBinding('class') class = 'c-svg-object';
+  @ViewChild('grid') grid!: ElementRef;
   @ViewChildren('circle', {read: ElementRef}) circle!: QueryList<ElementRef>;
   @ViewChildren('circle2', {read: ElementRef}) circle2!: QueryList<ElementRef>;
   @ViewChildren('circle3', {read: ElementRef}) circle3!: QueryList<ElementRef>;
-  constructor() {
+  constructor(private element: ElementRef, private render: Renderer2) {
     gsap.registerPlugin(ScrollTrigger);
   }
-
-  ngOnInit(): void {}
 
   randomize(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -26,6 +35,12 @@ export class SvgObjectComponent implements OnInit, AfterViewInit {
     const circles = this.circle.map((cir) => cir.nativeElement);
     const circles2 = this.circle2.map((cir) => cir.nativeElement);
     const circles3 = this.circle3.map((cir) => cir.nativeElement);
+    const colors = {
+      primary: '#FDCE56',
+      secondary: '#373596',
+      accent1: '#1AFFD6',
+      accent2: '#FF429D',
+    };
 
     const staggering = gsap.timeline({
       defaults: {
@@ -44,28 +59,37 @@ export class SvgObjectComponent implements OnInit, AfterViewInit {
     });
 
     staggering
+      .to(
+        this.element.nativeElement,
+        {
+          '--progress-end': '100%',
+          ease: 'power2.inOut',
+        },
+        0
+      )
       .fromTo(
         circles,
         {
           scale: 0.125,
-          fill: 'black',
+          fill: colors.secondary,
         },
         {
           scale: 0.45,
-          fill: 'black',
-        }
+          fill: colors.primary,
+        },
+        0
       )
       .fromTo(
         circles2,
         {
           x: 0,
           scale: 0.125,
-          fill: 'black',
+          fill: colors.secondary,
         },
         {
           x: 1,
           scale: 0.36,
-          fill: 'cyan',
+          fill: colors.accent1,
           ease: 'elastic',
         },
         0.125
@@ -73,14 +97,14 @@ export class SvgObjectComponent implements OnInit, AfterViewInit {
       .fromTo(
         circles3,
         {
-          y: 0,
+          x: 0,
           scale: 0.125,
-          fill: 'black',
+          fill: colors.secondary,
         },
         {
-          y: 1,
+          x: -1,
           scale: 0.36,
-          fill: 'magenta',
+          fill: colors.accent2,
           ease: 'elastic',
         },
         0.145
