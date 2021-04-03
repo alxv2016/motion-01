@@ -26,8 +26,8 @@ export class SvgObjectComponent implements OnInit, AfterViewInit {
     const staggering = gsap.timeline({
       defaults: {
         transformOrigin: '50% 50%',
-        ease: 'elastic',
-        duration: 1.75,
+        ease: 'back',
+        duration: 3,
         repeat: -1,
         yoyo: true,
         yoyoEase: true,
@@ -44,10 +44,16 @@ export class SvgObjectComponent implements OnInit, AfterViewInit {
       {
         scale: 0.125,
         fill: '#ff3c78',
+        strokeDasharray: '60',
+        strokeDashoffset: '360',
       },
       {
         scale: 0.98,
-        fill: '#ff3c78',
+        fill: '#64f5b9',
+        strokeWidth: 3,
+        strokeDashoffset: '0',
+        rotate: 360,
+        stroke: '#ff3c78',
       }
     );
   }
