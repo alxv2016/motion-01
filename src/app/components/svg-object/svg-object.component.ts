@@ -3,7 +3,6 @@ import {
   Component,
   ElementRef,
   HostBinding,
-  OnInit,
   QueryList,
   Renderer2,
   ViewChild,
@@ -19,7 +18,7 @@ import {ScrollTrigger} from 'gsap/ScrollTrigger';
 })
 export class SvgObjectComponent implements AfterViewInit {
   @HostBinding('class') class = 'c-svg-object';
-  @ViewChild('grid') grid!: ElementRef;
+  //@ViewChild('grid') grid!: ElementRef;
   @ViewChildren('circle', {read: ElementRef}) circle!: QueryList<ElementRef>;
   @ViewChildren('circle2', {read: ElementRef}) circle2!: QueryList<ElementRef>;
   @ViewChildren('circle3', {read: ElementRef}) circle3!: QueryList<ElementRef>;
@@ -27,9 +26,9 @@ export class SvgObjectComponent implements AfterViewInit {
     gsap.registerPlugin(ScrollTrigger);
   }
 
-  randomize(min: number, max: number) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
+  // randomize(min: number, max: number) {
+  //   return Math.floor(Math.random() * (max - min + 1)) + min;
+  // }
 
   ngAfterViewInit(): void {
     const circles = this.circle.map((cir) => cir.nativeElement);

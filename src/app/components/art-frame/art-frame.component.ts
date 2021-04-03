@@ -9,6 +9,7 @@ export class ArtFrameComponent {
   artworkTitle = 'The art work.';
   artworkDescr = 'Jump into the grid.';
   artworkNum = '001';
+
   @HostBinding('class') class = 'c-art-frame';
   constructor() {}
 }

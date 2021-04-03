@@ -31,25 +31,10 @@
   }
 }
 
-.grid {
+.the-grid {
   position: relative;
   z-index: 1;
   flex-shrink: 0;
   height: 90%;
   width: 90%;
-}
-
-:host-context(.l-content--reveal) {
-  &::after {
-    position: absolute;
-    content: '';
-    top: 0;
-    left: 0;
-    z-index: 4;
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(175deg, rgba(color('darker'), 0) var(--a-start), rgba(color('darker'), 1) var(--a-end));
-    transform-origin: bottom center;
-    will-change: transform;
-  }
 }

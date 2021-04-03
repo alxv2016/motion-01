@@ -12,42 +12,43 @@
   overflow: hidden;
 }
 
-.art-work-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 350px;
-  height: 350px;
-  border: $spacing--md solid color('light');
-  background-color: color('darker');
-  overflow: hidden;
-  @include breakpoint(md) {
-    width: 600px;
-    height: 600px;
-  }
-}
-
-.art-work-plate {
-  position: relative;
-  width: 100%;
-  background-color: color('light');
-  padding: $spacing--xl;
-  color: color('carbon');
-  .display {
-    color: color('dark');
-  }
-  &__footer {
+.c-art-frame {
+  &__container {
     position: relative;
     display: flex;
-    flex-grow: 1;
     align-items: center;
-    justify-content: space-between;
-    margin-top: $spacing--xl;
+    justify-content: center;
+    width: 350px;
+    height: 350px;
+    border: $spacing--md solid color('light');
+    background-color: color('darker');
+    overflow: hidden;
+    @include breakpoint(md) {
+      width: 600px;
+      height: 600px;
+    }
+  }
+  &__info {
+    position: relative;
+    width: 100%;
+    background-color: color('light');
+    padding: $spacing--xl;
+    color: color('carbon');
+    .display {
+      color: color('dark');
+    }
+    &-footer {
+      position: relative;
+      display: flex;
+      flex-grow: 1;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: $spacing--xl;
+    }
   }
 }
 
-.art-serial {
+.art-piece-number {
   display: block;
   line-height: 1.25;
   font-size: $title--3;
