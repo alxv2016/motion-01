@@ -6,8 +6,8 @@ import {Component, HostBinding, OnInit} from '@angular/core';
   styleUrls: ['./art-frame.component.scss'],
 })
 export class ArtFrameComponent {
-  artworkTitle = 'The art work.';
-  artworkDescr = 'Jump into the grid.';
+  artworkDescr = 'The kinetic design experiments';
+  artworkTitle = 'Super Retina.';
   artworkNum = '001';
 
   @HostBinding('class') class = 'c-art-frame';

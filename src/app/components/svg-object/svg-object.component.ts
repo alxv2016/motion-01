@@ -45,7 +45,7 @@ export class SvgObjectComponent implements AfterViewInit {
       defaults: {
         transformOrigin: '50% 50%',
         ease: 'back',
-        duration: 2,
+        duration: 3,
         repeat: -1,
         yoyo: true,
         yoyoEase: true,
@@ -73,7 +73,9 @@ export class SvgObjectComponent implements AfterViewInit {
           fill: colors.secondary,
         },
         {
-          scale: 0.45,
+          scale: 0.425,
+          y: 2,
+          x: 2,
           fill: colors.primary,
         },
         0
@@ -86,8 +88,8 @@ export class SvgObjectComponent implements AfterViewInit {
           fill: colors.secondary,
         },
         {
-          x: 1,
-          scale: 0.36,
+          x: 2,
+          scale: 0.38,
           fill: colors.accent1,
           ease: 'elastic',
         },
@@ -101,8 +103,8 @@ export class SvgObjectComponent implements AfterViewInit {
           fill: colors.secondary,
         },
         {
-          x: -1,
-          scale: 0.36,
+          x: -2,
+          scale: 0.38,
           fill: colors.accent2,
           ease: 'elastic',
         },

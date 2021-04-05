@@ -2,8 +2,8 @@
 :host-context(.c-svg-object) {
   --a-start: 0%;
   --a-end: 0%;
-  --progress-start: 10%;
-  --progress-end: 70%;
+  --progress-start: 60%;
+  --progress-end: 90%;
   position: relative;
   display: flex;
   align-items: center;
@@ -35,6 +35,6 @@
   position: relative;
   z-index: 1;
   flex-shrink: 0;
-  height: 90%;
-  width: 90%;
+  height: 80%;
+  width: 80%;
 }

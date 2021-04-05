@@ -34,6 +34,9 @@
     background-color: color('light');
     padding: $spacing--xl;
     color: color('carbon');
+    .small-print {
+      margin: 0;
+    }
     .display {
       color: color('dark');
     }
