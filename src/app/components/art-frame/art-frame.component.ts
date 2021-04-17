@@ -9,6 +9,7 @@ export class ArtFrameComponent {
   artworkDescr = 'The kinetic design experiments';
   artworkTitle = 'Super Retina.';
   artworkNum = '001';
+  warning = 'Warning your computer fan may spin at an increased RPM 🔥🔥🔥';
 
   @HostBinding('class') class = 'c-art-frame';
   constructor() {}

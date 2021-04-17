@@ -1,8 +1,10 @@
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   HostBinding,
+  NgZone,
   QueryList,
   Renderer2,
   ViewChild,
@@ -15,27 +17,24 @@ import {ScrollTrigger} from 'gsap/ScrollTrigger';
   selector: 'c-svg-object',
   templateUrl: './svg-object.component.html',
   styleUrls: ['./svg-object.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SvgObjectComponent implements AfterViewInit {
   @HostBinding('class') class = 'c-svg-object';
-  //@ViewChild('grid') grid!: ElementRef;
+  @ViewChild('grid') grid!: ElementRef;
   @ViewChildren('circle', {read: ElementRef}) circle!: QueryList<ElementRef>;
   @ViewChildren('circle2', {read: ElementRef}) circle2!: QueryList<ElementRef>;
   @ViewChildren('circle3', {read: ElementRef}) circle3!: QueryList<ElementRef>;
-  constructor(private element: ElementRef, private render: Renderer2) {
+  constructor(private element: ElementRef, private render: Renderer2, private ngZone: NgZone) {
     gsap.registerPlugin(ScrollTrigger);
   }
 
-  // randomize(min: number, max: number) {
-  //   return Math.floor(Math.random() * (max - min + 1)) + min;
-  // }
-
-  ngAfterViewInit(): void {
+  private initGsap(): void {
     const circles = this.circle.map((cir) => cir.nativeElement);
     const circles2 = this.circle2.map((cir) => cir.nativeElement);
     const circles3 = this.circle3.map((cir) => cir.nativeElement);
     const colors = {
-      primary: '#FDCE56',
+      primary: '#FFFFFF',
       secondary: '#373596',
       accent1: '#1AFFD6',
       accent2: '#FF429D',
@@ -44,71 +43,57 @@ export class SvgObjectComponent implements AfterViewInit {
     const staggering = gsap.timeline({
       defaults: {
         transformOrigin: '50% 50%',
-        ease: 'back',
-        duration: 3,
+        ease: 'elastic',
+        duration: 1.75,
         repeat: -1,
         yoyo: true,
-        yoyoEase: true,
+        //yoyoEase: true,
         stagger: {
           grid: 'auto',
-          amount: 2.25,
-          from: 0,
+          amount: 1.75,
+          from: 'center',
         },
       },
     });
 
     staggering
+      .to(this.grid.nativeElement, {
+        scale: 0.85,
+      })
       .to(
-        this.element.nativeElement,
-        {
-          '--progress-end': '100%',
-          ease: 'power2.inOut',
-        },
-        0
-      )
-      .fromTo(
         circles,
         {
-          scale: 0.125,
-          fill: colors.secondary,
-        },
-        {
-          scale: 0.425,
-          y: 2,
-          x: 2,
-          fill: colors.primary,
+          scale: 0.25,
+          y: -8,
+          x: 8,
         },
         0
       )
-      .fromTo(
+      .to(
         circles2,
         {
-          x: 0,
+          y: -8,
+          x: 8,
           scale: 0.125,
-          fill: colors.secondary,
-        },
-        {
-          x: 2,
-          scale: 0.38,
-          fill: colors.accent1,
           ease: 'elastic',
         },
         0.125
       )
-      .fromTo(
+      .to(
         circles3,
         {
-          x: 0,
+          y: -8,
+          x: 8,
           scale: 0.125,
-          fill: colors.secondary,
-        },
-        {
-          x: -2,
-          scale: 0.38,
-          fill: colors.accent2,
           ease: 'elastic',
         },
         0.145
       );
+  }
+
+  ngAfterViewInit(): void {
+    this.ngZone.runOutsideAngular(() => {
+      this.initGsap();
+    });
   }
 }
